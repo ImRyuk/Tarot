@@ -4,7 +4,7 @@ public class ArrayListCard {
 	
 	private Object [] data;
 	private int 	DEFAULT_CAPACITY = 10;
-	private int		size;
+	public int		size;
 	private int 	maxSize;
 	
 	public ArrayListCard() 
@@ -42,11 +42,25 @@ public class ArrayListCard {
 	    return true;
 	}
 	
+	//Searching with the index
 	public Object get(int index) 
 	{
 		if(index < 0 || index > size-1)
 			throw new IndexOutOfBoundsException("Index out of bounds.");
 		return data[index].toString();
+	}
+	
+	//Searching with the name
+	public Object get(String name) 
+	{
+		Object e = null;
+		for(int i = 0; i < this.size; i++){
+	        if (this.data[i].toString() == name) {
+	            e = this.data[i];
+	        }
+	    }
+		return e;
+		
 	}
 	
 	private void resizeIfNecessary() 
