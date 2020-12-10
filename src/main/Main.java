@@ -24,6 +24,7 @@ public class Main {
 
   public static void main(String[] args) throws IOException {
 	  ArrayListCard cards = loadCards();
+<<<<<<< HEAD
 	//create a new frame  
       JFrame f = new JFrame("frame"); 
         
@@ -98,6 +99,11 @@ public class Main {
           return null;
       }
 	  return cards;
+=======
+	  System.out.println(cards.size());
+	  System.out.println(cards.get(1));
+	  System.out.println("oui");
+>>>>>>> dc411b0161d9d99716df300db79705b9097e3f3c
   }
   
   public static ArrayListCard loadCards() {
