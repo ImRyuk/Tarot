@@ -10,6 +10,7 @@ public class Main {
 	  ArrayListCard cards = loadCards();
 	  System.out.println(cards.size());
 	  System.out.println(cards.get(1));
+	  System.out.println("oui");
   }
   
   public static ArrayListCard loadCards() {
