@@ -1,7 +1,18 @@
 package cards;
 
-public class ArrayListCard {
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
+public class ArrayListCard implements Serializable  {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6L;
 	private Object [] data;
 	private int 	DEFAULT_CAPACITY = 10;
 	public int		size;
@@ -9,7 +20,7 @@ public class ArrayListCard {
 	
 	public ArrayListCard() 
 	{
-		data = new Object[DEFAULT_CAPACITY];
+		data = new Card[DEFAULT_CAPACITY];
 		maxSize = DEFAULT_CAPACITY;
 		size = 0;
 	}
@@ -47,11 +58,11 @@ public class ArrayListCard {
 	{
 		if(index < 0 || index > size-1)
 			throw new IndexOutOfBoundsException("Index out of bounds.");
-		return data[index].toString();
+		return data[index];
 	}
 	
 	//Searching with the name
-	public Object get(String name) 
+	public Object get(String name)
 	{
 		Object e = null;
 		for(int i = 0; i < this.size; i++){

@@ -1,15 +1,103 @@
 package main;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JPanel;
+import javax.swing.ListModel;
+
 import cards.*;
-import player.*;
+
 
 public class Main {
 
   public static void main(String[] args) throws IOException {
 	  ArrayListCard cards = loadCards();
-	  System.out.println(cards.size());
-	  System.out.println(cards.get(1));
+	//create a new frame  
+      JFrame f = new JFrame("frame"); 
+        
+      
+      //create a panel 
+      JPanel p =new JPanel(); 
+        
+      //create a new label 
+      JLabel l= new JLabel("select the day of the week"); 
+
+      //create list 
+      JList b= new JList(); 
+        
+      
+      //set a selected index 
+      b.setSelectedIndex(2); 
+        
+      //add list to panel 
+      p.add(b); 
+ 
+      f.add(p); 
+        
+      //set the size of frame 
+      f.setSize(400,400); 
+         
+      f.show(); 
+	 
+	    
+	  Serialize(cards, "Bonsoir");
+	  
+	  ArrayListCard cards2 = new ArrayListCard();
+      cards2 = Deserialize("Bonjour");
+      System.out.println(cards2.size);
+    }
+  
+  public static void Serialize(ArrayListCard cards, String fileName) {
+	  try
+      {
+          FileOutputStream fos = new FileOutputStream("files/serialization/" + fileName);
+          ObjectOutputStream oos = new ObjectOutputStream(fos);
+          oos.writeObject(cards);
+          oos.close();
+          fos.close();
+      } 
+	      catch (IOException ioe) 
+	      {
+	          ioe.printStackTrace();
+	      }
+	}
+  
+  public static ArrayListCard Deserialize(String fileName) {
+	  ArrayListCard cards = new ArrayListCard();
+	  try
+      {
+          FileInputStream fis = new FileInputStream("files/serialization/" + fileName);
+          ObjectInputStream ois = new ObjectInputStream(fis);
+
+          cards = (ArrayListCard) ois.readObject();
+
+          ois.close();
+          fis.close();
+      } 
+      catch (IOException ioe) 
+      {
+          ioe.printStackTrace();
+          return null;
+      } 
+      catch (ClassNotFoundException c) 
+      {
+          System.out.println("Class not found");
+          c.printStackTrace();
+          return null;
+      }
+	  return cards;
   }
   
   public static ArrayListCard loadCards() {
@@ -253,7 +341,7 @@ public class Main {
 			  "Vous allez atteindre la gloire et la reconnaissance de tous vos pairs. C’est une obtention de diplôme, la réussite d’une formation. C’est aussi un client satisfait par votre travail, un patron qui vous félicite, des collègues qui vous savent indispensable. Votre coeur est rempli de joie et vous générez autour de vous des sourires et de la chaleur.",
 			  "Vous atteignez l’état de grâce. Votre succès est total. Le Monde vous a offert un formidable cadeau, et vous allez maintenant pouvoir en profiter. Votre entourage est fier de vous. Côté coeur, la vie à deux va pouvoir reprendre tranquillement, comme lors des plus belles périodes. La Terre continue à tourner, et vous aussi : vous rayonnez de bonheur dans une sphère de succès et de réussite.");
 	  
-	  cards.add(mat);cards.add(bateleur);cards.add(papesse);cards.add(imperatrice);cards.add(empereur);cards.add(pape);cards.add(amoureux);cards.add(chariot);cards.add(justice);cards.add(force);cards.add(pendu);cards.add(arcanne);cards.add(temperance);cards.add(diable);cards.add(diable);cards.add(maison);cards.add(etoile);cards.add(lune);cards.add(soleil);cards.add(jugement);cards.add(monde);
+	  cards.add(mat);cards.add(bateleur);cards.add(papesse);cards.add(imperatrice);cards.add(empereur);cards.add(pape);cards.add(amoureux);cards.add(chariot);cards.add(justice);cards.add(hermite);cards.add(roue);cards.add(force);cards.add(pendu);cards.add(arcanne);cards.add(temperance);cards.add(diable);cards.add(diable);cards.add(maison);cards.add(etoile);cards.add(lune);cards.add(soleil);cards.add(jugement);cards.add(monde);
 	  
 	  return cards;
   }

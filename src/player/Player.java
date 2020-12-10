@@ -11,4 +11,14 @@ public class Player {
 		this.cards = cards;
 	}
 	
+	public String checkCollection() {
+		String string = "";
+		
+		for(int i = 0; i < cards.size; i++) {
+			string += ("Card number: " + i + "\nName: " + cards.get(i) + "\n\r");
+		}
+		
+		return string;
+	}
+	
 }
