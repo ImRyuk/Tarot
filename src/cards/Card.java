@@ -1,5 +1,6 @@
 package cards;
 
+import java.io.File;
 import java.io.Serializable;
 
 public class Card implements Serializable {
@@ -19,8 +20,9 @@ public class Card implements Serializable {
 	public String actionToLead; 
 	public String result; 
 	public String synthesis;
+	public File image;
 	
-	public Card(int index, String name, String description, String atout, String obstacle,String actionToLead, String result,String synthesis){
+	public Card(int index, String name, String description, String atout, String obstacle,String actionToLead, String result,String synthesis, File image){
 		this.index = index;
 		this.name = name;
 		this.description = description;
@@ -29,6 +31,7 @@ public class Card implements Serializable {
 		this.actionToLead = actionToLead;
 		this.result = result;
 		this.synthesis = synthesis;
+		this.image = image;
 	
 	}
 
@@ -62,6 +65,10 @@ public class Card implements Serializable {
 	
 	public String getSynthesis() {
 		return this.synthesis;
+	}
+
+	public File getImage() {
+		return this.image;
 	}
 	
 	public String toString() {
