@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -28,15 +30,15 @@ public class CardCollectionMenu extends JPanel {
     	  	  ImageIcon icon =  new ImageIcon(new ImageIcon(image).getImage().getScaledInstance(100, 200, Image.SCALE_DEFAULT));
     	  	  JButton button =  new JButton(card.getName(), icon);
     	  	  
-//    	  	  button.addActionListener(new ActionListener() {
-//    	  		  
-//    	  		  @Override
-//    	  		  public void actionPerformed(ActionEvent arg0) {
-//    	  			  frame.setVisible(false);
-//    	  			  Window2 w2 = new Window2();
-//    	  			  w2.showWindow();
-//    	  		  }
-//    	  	  });
+    	  	  button.addActionListener(new ActionListener() {
+    	  		  
+    	  		  @Override
+    	  		  public void actionPerformed(ActionEvent arg0) {
+    	  			  frame.setVisible(false);
+    	  			  Window2 w2 = new Window2();
+    	  			  w2.showWindow();
+    	  		  }
+    	  	  });
     	  	  
     	  	  panel.add(button);
     	    }

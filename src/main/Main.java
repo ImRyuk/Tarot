@@ -22,8 +22,18 @@ public class Main {
   public static void main(String[] args) throws IOException {
 	  ArrayListCard cards = loadCards();
 
-	//create a new frame  
-      JFrame f = new JFrame("frame");
+	  showWindow(cards);
+	 
+	    
+//	  Serialize(cards, "Bonsoir");
+//	  
+//	  ArrayListCard cards2 = new ArrayListCard();
+//      cards2 = Deserialize("Bonjour");	
+//      System.out.println(cards2.size);
+    }
+  
+  public static void showWindow(ArrayListCard cards) {
+	  JFrame f = new JFrame("frame");
       
       //create a panel 
       JPanel p =new JPanel(); 
@@ -39,14 +49,7 @@ public class Main {
       f.setSize(800,1000); 
          
       f.show(); 
-	 
-	    
-	  Serialize(cards, "Bonsoir");
-	  
-	  ArrayListCard cards2 = new ArrayListCard();
-      cards2 = Deserialize("Bonjour");	
-      System.out.println(cards2.size);
-    }
+  }
   
   public static void Serialize(ArrayListCard cards, String fileName) {
 	  try
