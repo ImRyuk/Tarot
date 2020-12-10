@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import cards.ArrayListCard;
@@ -16,11 +17,15 @@ public class CardCollectionMenu extends JPanel {
 
     public ArrayListCard cards;
     public JPanel panel;
+    public JFrame frame;
     
-    public CardCollectionMenu(JPanel panel, ArrayListCard cards) {
+    public CardCollectionMenu(JPanel panel, ArrayListCard cards, JFrame frame) {
         this.cards = cards;
         this.panel = panel;
+        this.frame = frame;
     }
+    
+    
     
     public void render() {
     	for(int i=0; i < cards.size(); i++) {
@@ -35,8 +40,8 @@ public class CardCollectionMenu extends JPanel {
     	  		  @Override
     	  		  public void actionPerformed(ActionEvent arg0) {
     	  			  frame.setVisible(false);
-    	  			  Window2 w2 = new Window2();
-    	  			  w2.showWindow();
+    	  			  CardProfile cd = new CardProfile(panel,card);
+    	  			  cd.showWindow();
     	  		  }
     	  	  });
     	  	  

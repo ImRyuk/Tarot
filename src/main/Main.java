@@ -1,15 +1,11 @@
 package main;
 
-
-import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -20,16 +16,15 @@ import view.CardCollectionMenu;
 public class Main {
 
   public static void main(String[] args) throws IOException {
+	  
 	  ArrayListCard cards = loadCards();
-
 	  showWindow(cards);
-	 
 	    
 //	  Serialize(cards, "Bonsoir");
-//	  
 //	  ArrayListCard cards2 = new ArrayListCard();
 //      cards2 = Deserialize("Bonjour");	
 //      System.out.println(cards2.size);
+	  
     }
   
   public static void showWindow(ArrayListCard cards) {
@@ -38,7 +33,7 @@ public class Main {
       //create a panel 
       JPanel p =new JPanel(); 
       
-      CardCollectionMenu cardcollection = new CardCollectionMenu(p, cards);
+      CardCollectionMenu cardcollection = new CardCollectionMenu(p, cards, f);
       
       //Render the Card Collection Menu
       cardcollection.render();
