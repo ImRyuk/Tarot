@@ -1,15 +1,22 @@
 package main;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import cards.*;
+import player.Player;
 import view.CardCollectionMenu;
 
 
@@ -18,8 +25,11 @@ public class Main {
   public static void main(String[] args) throws IOException {
 	  
 	  ArrayListCard cards = loadCards();
-	  showWindow(cards);
-	    
+	  Player player = new Player(cards);
+	  showWindow(player);
+	  Home();
+
+	  
 //	  Serialize(cards, "Bonsoir");
 //	  ArrayListCard cards2 = new ArrayListCard();
 //      cards2 = Deserialize("Bonjour");	
@@ -27,16 +37,46 @@ public class Main {
 	  
     }
   
-  public static void showWindow(ArrayListCard cards) {
+  public static void Home() {
+	  
+	  //create a frame
 	  JFrame f = new JFrame("frame");
       
       //create a panel 
       JPanel p =new JPanel(); 
       
-      CardCollectionMenu cardcollection = new CardCollectionMenu(p, cards, f);
+      JTextField text = new JTextField();
+      JButton button = new JButton();
+      
+      button.addActionListener(new ActionListener() {
+  		  
+  		  @Override
+  		  public void actionPerformed(ActionEvent arg0) {
+  			  String oui = text.getText();
+  			  System.out.println("Hello" + oui);
+  	      
+  		  }
+  	  });
+      p.add(button);
+      p.add(text);
+      f.add(p); 
+        
+      //set the size of frame 
+      f.setSize(800,1000); 
+         
+      f.show();
+  }
+  
+  public static void showWindow(Player player) {
+	  JFrame f = new JFrame("frame");
+      
+      //create a panel 
+      JPanel p =new JPanel(); 
+      
+      CardCollectionMenu cardcollection = new CardCollectionMenu(p, player, f);
       
       //Render the Card Collection Menu
-      cardcollection.render();
+      cardcollection.showWindow();
  
       f.add(p); 
         

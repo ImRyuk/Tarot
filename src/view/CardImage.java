@@ -18,7 +18,7 @@ public class CardImage extends JPanel {
     public CardImage(File file) {
         try {
             image = ImageIO.read(file);
-            setPreferredSize(new Dimension(image.getWidth()/2, image.getHeight()/2));
+            setPreferredSize(new Dimension(image.getWidth(), image.getHeight()));
             
         } catch (IOException e) {
             // Hide image if an error occurs
@@ -27,7 +27,7 @@ public class CardImage extends JPanel {
     }
 
     public void paint(Graphics g) {
-        g.drawImage(image, 0, 0, 100, 200, null);
+        g.drawImage(image, 0, 0, 200, 400, null);
     }
     
 }

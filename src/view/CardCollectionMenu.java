@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import cards.ArrayListCard;
 import cards.Card;
+import player.Player;
 
 public class CardCollectionMenu extends JPanel {
     private static final long serialVersionUID = 1L;
@@ -18,16 +19,19 @@ public class CardCollectionMenu extends JPanel {
     public ArrayListCard cards;
     public JPanel panel;
     public JFrame frame;
+    public Player p;
     
-    public CardCollectionMenu(JPanel panel, ArrayListCard cards, JFrame frame) {
-        this.cards = cards;
+    public CardCollectionMenu(JPanel panel, Player p, JFrame frame) {
+        this.p = p;
         this.panel = panel;
         this.frame = frame;
     }
     
     
     
-    public void render() {
+    public void showWindow() {
+    	
+    	ArrayListCard cards = p.getCards();
     	for(int i=0; i < cards.size(); i++) {
     	  	  
     	  	  Card card = (Card) cards.get(i);
@@ -40,7 +44,7 @@ public class CardCollectionMenu extends JPanel {
     	  		  @Override
     	  		  public void actionPerformed(ActionEvent arg0) {
     	  			  frame.setVisible(false);
-    	  			  CardProfile cd = new CardProfile(panel,card);
+    	  			  CardProfile cd = new CardProfile(panel,card, p);
     	  			  cd.showWindow();
     	  		  }
     	  	  });
