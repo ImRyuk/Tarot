@@ -12,18 +12,16 @@ public class Card implements Serializable {
 	
 	
 	//A Card is made of 5 Great 
-	public int index;
-	public String name;
-	public String description;
-	public String atout; 
-	public String obstacle; 
-	public String actionToLead; 
-	public String result; 
-	public String synthesis;
-	public File image;
+	private String name;
+	private String description;
+	private String atout; 
+	private String obstacle; 
+	private String actionToLead; 
+	private String result; 
+	private String synthesis;
+	private File image;
 	
-	public Card(int index, String name, String description, String atout, String obstacle,String actionToLead, String result,String synthesis, File image){
-		this.index = index;
+	public Card( String name, String description, String atout, String obstacle,String actionToLead, String result,String synthesis, File image){
 		this.name = name;
 		this.description = description;
 		this.atout = atout;
@@ -47,28 +45,56 @@ public class Card implements Serializable {
 		return this.description;
 	}
 	
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 	public String getAtout() {
 		return this.atout;
+	}
+	
+	public void setAtout(String atout) {
+		this.atout = atout;
 	}
 	
 	public String getObstacle() {
 		return this.obstacle;
 	}
 	
+	public void setObstacle(String obstacle) {
+		this.obstacle = obstacle;
+	}
+	
 	public String getAction() {
 		return this.actionToLead;
+	}
+	
+	public void setAction(String actionToLead) {
+		this.actionToLead = actionToLead;
 	}
 	
 	public String getResult() {
 		return this.result;
 	}
 	
+	public void setResult(String result) {
+		this.result = result;
+	}
+	
 	public String getSynthesis() {
 		return this.synthesis;
+	}
+	
+	public void setSynthesis(String synthesis) {
+		this.synthesis = synthesis;
 	}
 
 	public File getImage() {
 		return this.image;
+	}
+	
+	public void setImage(File image) {
+		this.image = image;
 	}
 	
 	public String toString() {
