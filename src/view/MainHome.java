@@ -72,7 +72,7 @@ public class MainHome extends JFrame {
 	  		  @Override
 	  		  public void actionPerformed(ActionEvent arg0) {
 	  			  CreatePlayerRender create = new CreatePlayerRender();
-	  			  create.run();	  	      
+	  			  create.run();	  
 	  		  }
 	  	  });
 		btnNewPlayer.addActionListener(e -> this.dispose());

@@ -21,6 +21,7 @@ import player.Player;
 import java.awt.FlowLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 
 public class CardsCollectionRender extends JFrame {
 
@@ -88,9 +89,88 @@ public class CardsCollectionRender extends JFrame {
 		lblNewLabel.setBounds(70, 396, 214, 14);
 		contentPane.add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton("Jouer");
-		btnNewButton.setBounds(403, 378, 247, 84);
-		contentPane.add(btnNewButton);
+		JButton btnPlay = new JButton("Jouer");
+		btnPlay.setBounds(411, 338, 247, 84);
+		contentPane.add(btnPlay);
+		
+		JButton btnSearch = new JButton("Chercher");
+		btnSearch.setBounds(664, 18, 89, 23);
+		contentPane.add(btnSearch);
+		
+		JTextField textFieldSearch = new JTextField();
+		textFieldSearch.setBounds(488, 19, 86, 20);
+		contentPane.add(textFieldSearch);
+		textFieldSearch.setColumns(10);
+		
+		JRadioButton rdbtnIndex = new JRadioButton("Index");
+		rdbtnIndex.setSelected(true);
+		rdbtnIndex.setBounds(587, 7, 71, 23);
+		contentPane.add(rdbtnIndex);
+		
+		JRadioButton rdbtnName = new JRadioButton("Nom");
+		rdbtnName.setBounds(587, 33, 71, 23);
+		contentPane.add(rdbtnName);
+		
+		rdbtnIndex.addActionListener(new ActionListener() {
+	  		  
+	  		  @Override
+	  		  public void actionPerformed(ActionEvent arg0) {
+	  			  //Searching with the name
+	  			rdbtnName.setSelected(false);
+	  		  }
+	  	  });
+		
+		rdbtnName.addActionListener(new ActionListener() {
+	  		  
+	  		  @Override
+	  		  public void actionPerformed(ActionEvent arg0) {
+	  			  //Searching with the name
+	  			rdbtnIndex.setSelected(false);
+	  		  }
+	  	  });
+		
+		JLabel labelSearchCard = new JLabel("Chercher Carte");
+		labelSearchCard.setBounds(389, 22, 108, 14);
+		contentPane.add(labelSearchCard);
+		
+		btnSearch.addActionListener(new ActionListener() {
+	  		  
+	  		  @Override
+	  		  public void actionPerformed(ActionEvent arg0) {
+	  			  //Searching with the name
+	  			  if(rdbtnName.isSelected() && !rdbtnIndex.isSelected()) {
+	  				  String searchName = textFieldSearch.getText();
+	  				  Card searchedCard = (Card) player.getCards().get(searchName);
+	  				  CardProfileRender cdp = new CardProfileRender(searchedCard, player);
+	  				  cdp.run();
+	  			  } 
+	  			  //Searching with the index
+	  			  else if (rdbtnIndex.isSelected() && !rdbtnName.isSelected()) {
+	  				String search = textFieldSearch.getText();
+	  				int searchIndex = Integer.parseInt(search);
+	  				Card searchedCard = (Card) player.getCards().get(searchIndex);
+	  				CardProfileRender cdp = new CardProfileRender(searchedCard, player);
+	  				cdp.run();
+	  			  } else {
+	  				JOptionPane.showMessageDialog(null, 
+	                        "Merci de cocher un des deux selecteurs seulement!", 
+	                        "ATTENTION", 
+	                        JOptionPane.WARNING_MESSAGE);
+	  			  }
+	  		  }
+	  	  });
+		
+		btnPlay.addActionListener(new ActionListener() {
+	  		  
+	  		  @Override
+	  		  public void actionPerformed(ActionEvent arg0) {
+	  			  //Searching with the name
+	  			  PlayCardsRender play = new PlayCardsRender(player);
+	  			  play.run();
+	  		  }
+	  	  });
+		btnPlay.addActionListener(e -> this.dispose());
+		
 		
 		btnExportPlayer.addActionListener(new ActionListener() {
 	  		  
@@ -160,5 +240,4 @@ public class CardsCollectionRender extends JFrame {
 		          ioe.printStackTrace();
 		      }
 		}
-	
 }

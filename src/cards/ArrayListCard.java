@@ -1,6 +1,7 @@
 package cards;
 
 import java.io.Serializable;
+import java.util.Random;
 
 public class ArrayListCard implements Serializable  {
 	
@@ -68,6 +69,22 @@ public class ArrayListCard implements Serializable  {
 		return e;
 		
 	}
+	
+	public void shuffleArray() {
+        int n = this.size;
+        Random random = new Random();
+        random.nextInt();
+        for (int i = 0; i < n; i++) {
+            int change = i + random.nextInt(n - i);
+            swap(this.data, i, change);
+        }
+    }
+	
+	private static void swap(Object[] a, int i, int change) {
+        Object helper = a[i];
+        a[i] = a[change];
+        a[change] = helper;
+    }
 	
 	private void resizeIfNecessary() 
 	{
